@@ -10,6 +10,16 @@
     <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
         <h2 class="text-2xl font-bold mb-6 text-gray-800">Cadastrar Time de Futebol</h2>
 
+        @if ($errors->any())
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         @if(session('sucesso'))
             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
                 {{ session('sucesso') }}
