@@ -7,6 +7,7 @@ use App\Models\Jogo;
 use App\Models\Fase;
 use App\Models\Time;
 use App\Models\Estadio;
+use App\Models\Campeonato;
 
 class JogoController extends Controller
 {
@@ -33,5 +34,24 @@ class JogoController extends Controller
         Jogo::create($request->all());
 
         return redirect()->back()->with('sucesso', 'Jogo cadastrado com sucesso!');
+    }
+
+    public function consultar(Request $request)
+    {
+        $campeonatos = Campeonato::all();
+        $fases = Fase::with('edicao.campeonato')->get();
+        $jogos = [];
+        $faseSelecionada = null;
+
+        if ($request->has('fase_id') && $request->fase_id) {
+            $faseSelecionada = Fase::with('edicao.campeonato')->find($request->fase_id);
+            $jogos = Jogo::with(['mandante', 'visitante', 'estadio'])
+                ->where('fase_id', $request->fase_id)
+                ->orderBy('rodada')
+                ->orderBy('data_hora')
+                ->get();
+        }
+
+        return view('jogos.consultar', compact('campeonatos', 'fases', 'jogos', 'faseSelecionada'));
     }
 }

@@ -25,3 +25,4 @@ Route::post('/edicoes', [EdicaoController::class, 'store'])->name('edicoes.store
 
 Route::get('/jogos/criar', [JogoController::class, 'create']);
 Route::post('/jogos', [JogoController::class, 'store'])->name('jogos.store');
+Route::get('/jogos/consultar', [JogoController::class, 'consultar'])->name('jogos.consultar');
