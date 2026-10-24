@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TimeController;
 use App\Http\Controllers\EstadioController;
 use App\Http\Controllers\CampeonatoController;
+use App\Http\Controllers\EdicaoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,3 +18,6 @@ Route::post('/estadios', [EstadioController::class, 'store'])->name('estadios.st
 
 Route::get('/campeonatos/criar', [CampeonatoController::class, 'create']);
 Route::post('/campeonatos', [CampeonatoController::class, 'store'])->name('campeonatos.store');
+
+Route::get('/edicoes/criar', [EdicaoController::class, 'create']);
+Route::post('/edicoes', [EdicaoController::class, 'store'])->name('edicoes.store');
