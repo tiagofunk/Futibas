@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TimeController;
 use App\Http\Controllers\EstadioController;
+use App\Http\Controllers\CampeonatoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,3 +14,6 @@ Route::post('/times', [TimeController::class, 'store'])->name('times.store');
 
 Route::get('/estadios/criar', [EstadioController::class, 'create']);
 Route::post('/estadios', [EstadioController::class, 'store'])->name('estadios.store');
+
+Route::get('/campeonatos/criar', [CampeonatoController::class, 'create']);
+Route::post('/campeonatos', [CampeonatoController::class, 'store'])->name('campeonatos.store');
