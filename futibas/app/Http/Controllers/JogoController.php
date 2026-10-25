@@ -55,4 +55,11 @@ class JogoController extends Controller
 
         return view('jogos.consultar', compact('campeonatos', 'fases', 'jogos', 'faseSelecionada'));
     }
+
+    public function show($id)
+    {
+        $jogo = Jogo::with(['mandante', 'visitante', 'estadio', 'fase.edicao.campeonato'])->findOrFail($id);
+
+        return view('jogos.show', compact('jogo'));
+    }
 }
