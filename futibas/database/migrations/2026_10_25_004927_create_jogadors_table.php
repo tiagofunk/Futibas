@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('pe_preferencial');
             $table->string('cidade_nascimento');
             $table->string('pais_nascimento');
-            $table->string('nacionalidade');
+            $table->jsonb('nacionalidades');
             $table->string('posicao');
             $table->timestamps();
         });

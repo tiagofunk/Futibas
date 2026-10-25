@@ -22,7 +22,8 @@ class JogadorController extends Controller
             'pe_preferencial' => 'required|in:Direito,Esquerdo,Ambidestro',
             'cidade_nascimento' => 'required|string|max:255',
             'pais_nascimento' => 'required|string|max:255',
-            'nacionalidade' => 'required|string|max:255',
+            'nacionalidades' => 'required|array|min:1',
+            'nacionalidades.*' => 'required|string|max:255',
             'posicao' => 'required|string|max:255',
         ]);
 

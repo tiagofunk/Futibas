@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Tom Select CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/jogo-create.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tom-select.css') }}">
 </head>
 <body class="bg-gray-100 py-10 px-4">
     <div class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-md">

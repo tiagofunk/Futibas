@@ -16,7 +16,11 @@ class Jogador extends Model
         'pe_preferencial',
         'cidade_nascimento',
         'pais_nascimento',
-        'nacionalidade',
+        'nacionalidades',
         'posicao',
+    ];
+
+    protected $casts = [
+        'nacionalidades' => 'array', // Converte JSONB do Postgres para Array PHP automaticamente
     ];
 }

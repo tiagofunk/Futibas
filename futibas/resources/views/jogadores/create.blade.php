@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Jogador</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tom Select CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/tom-select.css') }}">
 </head>
 <body class="bg-gray-100 py-10 px-4">
     <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
@@ -90,8 +93,10 @@
                 </div>
 
                 <div>
-                    <label class="block text-gray-700 text-sm font-bold mb-2">Nacionalidade:</label>
-                    <input type="text" name="nacionalidade" placeholder="Ex: Argentina / Espanhola" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring" required>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Nacionalidades:</label>
+                    <select id="nacionalidades_select" name="nacionalidades[]" multiple required>
+                        <!-- Preenchido automaticamente pelo jogador-create.js -->
+                    </select>
                 </div>
             </div>
 
@@ -100,5 +105,10 @@
             </button>
         </form>
     </div>
+
+    <!-- Tom Select JS -->
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
+    <!-- Script Externo -->
+    <script src="{{ asset('js/jogador-create.js') }}"></script>
 </body>
 </html>
