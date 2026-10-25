@@ -11,9 +11,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/times', [TimeController::class, 'consultarPorNome']);
 Route::get('/times/criar', [TimeController::class, 'create']);
 Route::post('/times', [TimeController::class, 'store'])->name('times.store');
 
+Route::get('/estadios', [EstadioController::class, 'consultarPorNome']);
 Route::get('/estadios/criar', [EstadioController::class, 'create']);
 Route::post('/estadios', [EstadioController::class, 'store'])->name('estadios.store');
 

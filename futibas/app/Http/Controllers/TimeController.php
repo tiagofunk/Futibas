@@ -26,4 +26,15 @@ class TimeController extends Controller
 
         return redirect()->back()->with('sucesso', 'Time cadastrado com sucesso!');
     }
+
+    public function consultarPorNome(Request $request) {
+        $termo = $request->get('q', '');
+        
+        // Busca apenas os times que correspondem ao que foi digitado (limitado a 10)
+        $times = Time::where('nome', 'ilike', "%{$termo}%")
+                    ->limit(10)
+                    ->get(['id', 'nome']);
+
+        return response()->json($times);
+    }
 }

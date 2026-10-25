@@ -26,4 +26,12 @@ class EstadioController extends Controller
 
         return redirect()->back()->with('sucesso', 'Estádio cadastrado com sucesso!');
     }
+
+    public function consultarPorNome(Request $request) {
+        $termo = $request->get('q', '');
+        return Estadio::where('nome', 'ilike', "%{$termo}%")
+                    ->orWhere('cidade', 'ilike', "%{$termo}%")
+                    ->limit(10)
+                    ->get(['id', 'nome', 'cidade']);
+    }
 }

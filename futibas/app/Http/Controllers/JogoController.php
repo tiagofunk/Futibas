@@ -13,11 +13,12 @@ class JogoController extends Controller
 {
     public function create()
     {
+        $campeonatos = Campeonato::all();
         $fases = Fase::with('edicao.campeonato')->get();
         $times = Time::all();
         $estadios = Estadio::all();
 
-        return view('jogos.create', compact('fases', 'times', 'estadios'));
+        return view('jogos.create', compact('campeonatos', 'fases', 'times', 'estadios'));
     }
 
     public function store(Request $request)
