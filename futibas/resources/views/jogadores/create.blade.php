@@ -9,8 +9,29 @@
     <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/tom-select.css') }}">
 </head>
-<body class="bg-gray-100 py-10 px-4">
-    <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
+<body class="bg-gray-100 ">
+
+    <header class="w-full bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Título / Logo do Sistema -->
+            <h1 class="text-xl font-extrabold text-gray-800 tracking-tight flex items-center space-x-2">
+                <span>⚽</span>
+                <span>Sistema de Gestão de Futebol</span>
+            </h1>
+
+            <!-- Navegação Direta / Início -->
+            <nav class="flex items-center space-x-4">
+                <a href="{{ route('home') }}" class="inline-flex items-center space-x-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-3.5 py-2 rounded-lg text-sm font-semibold transition shadow-sm" title="Página Inicial">
+                    <!-- Ícone de Casa (SVG) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    <span>Início</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+    <div class="max-w-2xl mx-auto bg-white p-8 my-8 rounded-lg shadow-md">
         <h2 class="text-2xl font-bold mb-6 text-gray-800">Cadastrar Jogador</h2>
 
         @if(session('sucesso'))

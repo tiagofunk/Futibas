@@ -11,23 +11,23 @@ use App\Http\Controllers\GolController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/times', [TimeController::class, 'consultarPorNome']);
-Route::get('/times/criar', [TimeController::class, 'create']);
+Route::get('/times/criar', [TimeController::class, 'create'])->name('times.create');
 Route::post('/times', [TimeController::class, 'store'])->name('times.store');
 
 Route::get('/estadios', [EstadioController::class, 'consultarPorNome']);
-Route::get('/estadios/criar', [EstadioController::class, 'create']);
+Route::get('/estadios/criar', [EstadioController::class, 'create'])->name('estadios.create');
 Route::post('/estadios', [EstadioController::class, 'store'])->name('estadios.store');
 
-Route::get('/campeonatos/criar', [CampeonatoController::class, 'create']);
+Route::get('/campeonatos/criar', [CampeonatoController::class, 'create'])->name('campeonatos.create');;
 Route::post('/campeonatos', [CampeonatoController::class, 'store'])->name('campeonatos.store');
 
-Route::get('/edicoes/criar', [EdicaoController::class, 'create']);
+Route::get('/edicoes/criar', [EdicaoController::class, 'create'])->name('edicoes.create');;
 Route::post('/edicoes', [EdicaoController::class, 'store'])->name('edicoes.store');
 
-Route::get('/jogos/criar', [JogoController::class, 'create']);
+Route::get('/jogos/criar', [JogoController::class, 'create'])->name("jogos.create");
 Route::post('/jogos', [JogoController::class, 'store'])->name('jogos.store');
 Route::get('/jogos/consultar', [JogoController::class, 'consultar'])->name('jogos.consultar');
 Route::get('/jogos/{id}', [JogoController::class, 'show'])->name('jogos.show');
