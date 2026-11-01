@@ -31,4 +31,15 @@ class JogadorController extends Controller
 
         return redirect()->back()->with('sucesso', 'Jogador cadastrado com sucesso!');
     }
+
+    public function consultar(Request $request)
+    {
+        $termo = $request->get('q');
+
+        $jogadores = Jogador::where('nome', 'ILIKE', "%{$termo}%")
+            ->limit(10)
+            ->get(['id', 'nome', 'posicao']);
+
+        return response()->json($jogadores);
+    }
 }

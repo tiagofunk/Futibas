@@ -35,6 +35,7 @@ Route::get('/jogos/{id}/editar', [JogoController::class, 'edit'])->name('jogos.e
 
 Route::get('/jogadores/criar', [JogadorController::class, 'create'])->name('jogadores.create');
 Route::post('/jogadores', [JogadorController::class, 'store'])->name('jogadores.store');
+Route::get('/jogadores/consultar', [JogadorController::class, 'consultar'])->name('jogadores.consultar');
 
 Route::post('/gols/{jogo}', [GolController::class, 'store'])->name('gols.store');
 Route::delete('/gols/{jogo}', [GolController::class, 'store'])->name('gols.destroy');

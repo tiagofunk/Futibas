@@ -100,13 +100,10 @@
                     </select>
                 </div>
 
-                <div class="md:col-span-2">
+               <div class="md:col-span-2">
                     <label class="block text-gray-700 text-sm font-bold mb-2">Jogador:</label>
-                    <select id="jogador_select" name="jogador_id" required>
-                        <option value="">Pesquise e selecione o jogador...</option>
-                        @foreach($jogadores as $jogador)
-                            <option value="{{ $jogador->id }}">{{ $jogador->nome }} ({{ $jogador->posicao ?? 'Posição' }})</option>
-                        @endforeach
+                    <select id="jogador_select" name="jogador_id" placeholder="Digite para pesquisar o jogador..." required>
+                        <option value="">Digite para pesquisar...</option>
                     </select>
                 </div>
             </div>
@@ -192,8 +189,35 @@
     <script>
         document.addEventListener("DOMContentLoaded", function(){
             new TomSelect("#jogador_select", {
-                create: false,
-                placeholder: "Pesquise o jogador..."
+                valueField: 'id',
+                labelField: 'nome',
+                searchField: 'nome',
+                placeholder: 'Digite o nome do jogador...',
+                load: function(query, callback) {
+                    if (!query.length) return callback();
+
+                    // Faz a requisição AJAX para a sua rota de busca no Laravel
+                    fetch('{{ route("jogadores.consultar") }}?q=' + encodeURIComponent(query))
+                        .then(response => response.json())
+                        .then(json => {
+                            callback(json);
+                        }).catch(()=>{
+                            callback();
+                        });
+                },
+                // Personaliza como o jogador aparece na lista de resultados
+                render: {
+                    option: function(item, escape) {
+                        return `<div class="py-2 px-3 flex flex-col">
+                                    <span class="font-bold text-gray-800">
+                                        ${escape(item.nome)} (${escape(item.posicao ?? 'Posição não informada')})
+                                    </span>
+                                </div>`;
+                    },
+                    item: function(item, escape) {
+                        return `<div>${escape(item.nome)}</div>`;
+                    }
+                }
             });
         });
     </script>
