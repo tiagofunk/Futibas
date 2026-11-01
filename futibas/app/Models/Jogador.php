@@ -10,6 +10,7 @@ class Jogador extends Model
 
     protected $fillable = [
         'nome',
+        'nome_camisa',
         'data_nascimento',
         'peso',
         'altura',

@@ -16,6 +16,7 @@ class JogadorController extends Controller
     {
         $request->validate([
             'nome' => 'required|string|max:255',
+            'nome_camisa' => 'nullable|string|max:50',
             'data_nascimento' => 'required|date|before:today',
             'peso' => 'required|numeric|min:30|max:200',
             'altura' => 'required|numeric|min:1.00|max:2.50',

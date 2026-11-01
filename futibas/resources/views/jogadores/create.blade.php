@@ -58,6 +58,12 @@
                 <input type="text" name="nome" placeholder="Ex: Lionel Messi" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring" required>
             </div>
 
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Nome na Camisa:</label>
+                <input type="text" name="nome_camisa" placeholder="Ex: Messi" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-500">
+                <p class="text-xs text-gray-500 mt-1">Como o nome aparecerá impresso na camisa do jogador.</p>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                 <div>
                     <label class="block text-gray-700 text-sm font-bold mb-2">Data de Nascimento:</label>
