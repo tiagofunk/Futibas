@@ -59,7 +59,7 @@ class JogoController extends Controller
 
     public function show($id)
     {
-        $jogo = Jogo::with(['mandante', 'visitante', 'estadio', 'fase.edicao.campeonato'])->findOrFail($id);
+        $jogo = Jogo::with(['mandante', 'visitante', 'estadio', 'fase.edicao.campeonato', 'gols'])->findOrFail($id);
 
         return view('jogos.show', compact('jogo'));
     }
