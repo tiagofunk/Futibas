@@ -34,4 +34,9 @@ class Jogo extends Model
     {
         return $this->belongsTo(Estadio::class);
     }
+
+    public function gols()
+    {
+        return $this->hasMany(Gol::class);
+    }
 }

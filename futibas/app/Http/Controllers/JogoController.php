@@ -8,6 +8,7 @@ use App\Models\Fase;
 use App\Models\Time;
 use App\Models\Estadio;
 use App\Models\Campeonato;
+use App\Models\Jogador;
 
 class JogoController extends Controller
 {
@@ -61,5 +62,12 @@ class JogoController extends Controller
         $jogo = Jogo::with(['mandante', 'visitante', 'estadio', 'fase.edicao.campeonato'])->findOrFail($id);
 
         return view('jogos.show', compact('jogo'));
+    }
+
+    public function edit($id)
+    {
+        $jogo = Jogo::with(['mandante', 'visitante', 'estadio', 'fase.edicao.campeonato'])->findOrFail($id);
+        $jogadores = Jogador::all();
+        return view('jogos.addGols', compact('jogo', 'jogadores'));
     }
 }

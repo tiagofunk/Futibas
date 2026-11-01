@@ -7,6 +7,7 @@ use App\Http\Controllers\CampeonatoController;
 use App\Http\Controllers\EdicaoController;
 use App\Http\Controllers\JogoController;
 use App\Http\Controllers\JogadorController;
+use App\Http\Controllers\GolController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,3 +35,6 @@ Route::get('/jogos/{id}/editar', [JogoController::class, 'edit'])->name('jogos.e
 
 Route::get('/jogadores/criar', [JogadorController::class, 'create'])->name('jogadores.create');
 Route::post('/jogadores', [JogadorController::class, 'store'])->name('jogadores.store');
+
+Route::post('/gols/{jogo}', [GolController::class, 'store'])->name('gols.store');
+Route::delete('/gols/{jogo}', [GolController::class, 'store'])->name('gols.destroy');
