@@ -47,7 +47,7 @@ class JogoController extends Controller
 
         if ($request->has('fase_id') && $request->fase_id) {
             $faseSelecionada = Fase::with('edicao.campeonato')->find($request->fase_id);
-            $jogos = Jogo::with(['mandante', 'visitante', 'estadio'])
+            $jogos = Jogo::with(['mandante', 'visitante', 'estadio','gols'])
                 ->where('fase_id', $request->fase_id)
                 ->orderBy('rodada')
                 ->orderBy('data_hora')

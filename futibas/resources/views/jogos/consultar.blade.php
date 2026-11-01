@@ -73,22 +73,35 @@
                                     <td class="py-3 px-4 font-bold">{{ $jogo->rodada }}ª</td>
                                     <td class="py-3 px-4">{{ \Carbon\Carbon::parse($jogo->data_hora)->format('d/m/Y H:i') }}</td>
                                     <td class="py-3 px-4 text-right font-medium">{{ $jogo->mandante->nome }}</td>
-                                    <td class="py-3 px-4 text-center text-gray-400 font-bold">X</td>
+                                    
+                                    <!-- Placar interativo que serve como botão para gerenciar os gols -->
+                                    <td class="py-3 px-4 text-center font-bold whitespace-nowrap">
+                                        @php
+                                            $golsMandante = $jogo->gols->where('is_mandante', true)->count();
+                                            $golsVisitante = $jogo->gols->where('is_mandante', false)->count();
+                                            $temGols = $jogo->gols->count() > 0;
+                                        @endphp
+
+                                        <a href="{{ route('jogos.show', $jogo->id) }}" title="Gerenciar Gols" class="inline-flex items-center justify-center px-3 py-1 bg-gray-100 hover:bg-blue-50 border border-gray-200 hover:border-blue-300 rounded-lg text-sm transition group">
+                                            @if($temGols)
+                                                <span class="text-blue-600 group-hover:text-blue-700 font-bold">{{ $golsMandante }}</span> 
+                                                <span class="text-gray-400 mx-1">x</span> 
+                                                <span class="text-blue-600 group-hover:text-blue-700 font-bold">{{ $golsVisitante }}</span>
+                                            @else
+                                                <span class="text-gray-400 group-hover:text-blue-600">X</span>
+                                            @endif
+                                        </a>
+                                    </td>
+
                                     <td class="py-3 px-4 font-medium">{{ $jogo->visitante->nome }}</td>
                                     <td class="py-3 px-4 text-gray-600">{{ $jogo->estadio->nome }} ({{ $jogo->estadio->cidade }})</td>
-                                    <td class="py-3 px-4 border-b text-center space-x-2">
-                                        <!-- Botão Visualizar (Lupa) -->
-                                        <a href="{{ route('jogos.show', $jogo->id) }}" 
-                                        title="Visualizar" 
-                                        class="inline-flex items-center p-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                            </svg>
-                                        </a>
+                                    
+                                    <!-- Ações padrão (Visualizar e Editar) -->
+                                    <td class="py-3 px-4 border-b text-center whitespace-nowrap space-x-2">
 
                                         <!-- Botão Editar (Lápis) -->
                                         <a href="{{ route('jogos.edit', $jogo->id) }}" 
-                                        title="Editar" 
+                                        title="Editar Jogo" 
                                         class="inline-flex items-center p-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg transition">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
