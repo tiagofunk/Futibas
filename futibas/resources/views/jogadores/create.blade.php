@@ -102,6 +102,9 @@
                         <option value="Lateral Esquerdo">Lateral Esquerdo</option>
                         <option value="Volante">Volante</option>
                         <option value="Meia">Meia</option>
+                        <option value="Ponta">Ponta</option>
+                        <option value="Ponta Direita">Ponta Direita</option>
+                        <option value="Ponta Esquerda">Ponta Esquerda</option>
                         <option value="Atacante">Atacante</option>
                         <option value="Centroavante">Centroavante</option>
                     </select>

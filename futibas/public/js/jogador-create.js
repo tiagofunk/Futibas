@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Guiné Equatorial",
         "Guiana",
         "Haiti",
+        "Holanda",
         "Honduras",
         "Hungria",
         "Iêmen",
@@ -134,7 +135,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "Noruega",
         "Nova Zelândia",
         "Omã",
-        "Países Baixos",
         "Paquistão",
         "Palau",
         "Palestina",
@@ -191,6 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Uzbequistão",
         "Vanuatu",
         "Vaticano",
+        "Venezuela",
         "Vietnã",
         "Zâmbia",
         "Zimbábue"
