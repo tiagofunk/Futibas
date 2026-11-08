@@ -38,4 +38,4 @@ Route::post('/jogadores', [JogadorController::class, 'store'])->name('jogadores.
 Route::get('/jogadores/consultar', [JogadorController::class, 'consultar'])->name('jogadores.consultar');
 
 Route::post('/gols/{jogo}', [GolController::class, 'store'])->name('gols.store');
-Route::delete('/gols/{jogo}', [GolController::class, 'store'])->name('gols.destroy');
+Route::delete('/gols/{gol}', [GolController::class, 'destroy'])->name('gols.destroy');
