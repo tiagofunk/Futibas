@@ -210,7 +210,7 @@
                     option: function(item, escape) {
                         return `<div class="py-2 px-3 flex flex-col">
                                     <span class="font-bold text-gray-800">
-                                        ${escape(item.nome)} (${escape(item.posicao ?? 'Posição não informada')})
+                                        ${escape(item.nome)} (${escape(item.nome_camisa)}) - ${escape(item.posicao ?? 'Posição não informada')}
                                     </span>
                                 </div>`;
                     },

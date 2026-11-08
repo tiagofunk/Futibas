@@ -39,7 +39,7 @@ class JogadorController extends Controller
 
         $jogadores = Jogador::where('nome', 'ILIKE', "%{$termo}%")
             ->limit(10)
-            ->get(['id', 'nome', 'posicao']);
+            ->get(['id', 'nome', 'nome_camisa', 'posicao']);
 
         return response()->json($jogadores);
     }
