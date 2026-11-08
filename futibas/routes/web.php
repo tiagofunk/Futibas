@@ -13,9 +13,11 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/times', [TimeController::class, 'consultarPorNome']);
+Route::get('/times', [TimeController::class, 'consultarPorNome'])->name('times.consultar');
 Route::get('/times/criar', [TimeController::class, 'create'])->name('times.create');
 Route::post('/times', [TimeController::class, 'store'])->name('times.store');
+Route::get('/times/escudo/adicionar',[TimeController::class, 'atualizarEscudo'])->name('times.escudo.form');
+Route::put('/times/escudo', [TimeController::class, 'store_image'])->name('times.atualizarEscudo');
 
 Route::get('/estadios', [EstadioController::class, 'consultarPorNome']);
 Route::get('/estadios/criar', [EstadioController::class, 'create'])->name('estadios.create');

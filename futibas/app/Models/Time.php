@@ -8,6 +8,7 @@ class Time extends Model
 {
     protected $fillable = [
         'nome',
+        'escudo',
         'nome_completo',
         'cidade',
         'pais',
