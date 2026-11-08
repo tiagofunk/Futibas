@@ -94,9 +94,19 @@
                                 <tr class="hover:bg-gray-50 border-b">
                                     <td class="py-3 px-4 font-bold">{{ $jogo->rodada }}ª</td>
                                     <td class="py-3 px-4">{{ \Carbon\Carbon::parse($jogo->data_hora)->format('d/m/Y H:i') }}</td>
-                                    <td class="py-3 px-4 text-right font-medium">{{ $jogo->mandante->nome }}</td>
                                     
-                                    <!-- Placar interativo que serve como botão para gerenciar os gols -->
+                                    <!-- Mandante com Escudo (Alinhado à direita) -->
+                                    <td class="py-3 px-4 text-right font-medium">
+                                        <div class="flex items-center justify-end space-x-2">
+                                            <span>{{ $jogo->mandante->nome }}</span>
+                                            @if($jogo->mandante->escudo)
+                                                <img src="{{ asset('storage/' . $jogo->mandante->escudo) }}" alt="{{ $jogo->mandante->nome }}" class="w-6 h-6 object-contain">
+                                            @else
+                                                <div class="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center text-[10px] text-gray-500 font-bold">⚽</div>
+                                            @endif
+                                        </div>
+                                    </td>
+                                    
                                     <td class="py-3 px-4 text-center font-bold whitespace-nowrap">
                                         @php
                                             $golsMandante = $jogo->gols->where('is_mandante', true)->count();
@@ -115,12 +125,22 @@
                                         </a>
                                     </td>
 
-                                    <td class="py-3 px-4 font-medium">{{ $jogo->visitante->nome }}</td>
+                                    <!-- Visitante com Escudo (Alinhado à esquerda) -->
+                                    <td class="py-3 px-4 font-medium">
+                                        <div class="flex items-center space-x-2">
+                                            @if($jogo->visitante->escudo)
+                                                <img src="{{ asset('storage/' . $jogo->visitante->escudo) }}" alt="{{ $jogo->visitante->nome }}" class="w-6 h-6 object-contain">
+                                            @else
+                                                <div class="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center text-[10px] text-gray-500 font-bold">⚽</div>
+                                            @endif
+                                            <span>{{ $jogo->visitante->nome }}</span>
+                                        </div>
+                                    </td>
+
                                     <td class="py-3 px-4 text-gray-600">{{ $jogo->estadio->nome }} ({{ $jogo->estadio->cidade }})</td>
                                     
                                     <!-- Ações padrão (Visualizar e Editar) -->
                                     <td class="py-3 px-4 border-b text-center whitespace-nowrap space-x-2">
-
                                         <!-- Botão Editar (Lápis) -->
                                         <a href="{{ route('jogos.edit', $jogo->id) }}" 
                                         title="Editar Jogo" 
