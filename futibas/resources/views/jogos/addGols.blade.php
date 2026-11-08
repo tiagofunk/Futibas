@@ -63,24 +63,32 @@
         @endif
 
         <!-- Placar / Confronto Atualizado Dinamicamente -->
-        <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 mb-8 flex justify-around items-center text-center">
-            <div class="w-2/5">
-                <span class="text-xs text-gray-500 uppercase block mb-1">Mandante</span>
+        <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 mb-6 flex justify-around items-center text-center">
+            <!-- Mandante -->
+            <div class="w-1/3 flex flex-col items-center">
+                <span class="text-xs text-gray-500 uppercase block mb-2">Mandante</span>
+                @if(optional($jogo->mandante)->escudo)
+                    <img src="{{ asset('storage/' . $jogo->mandante->escudo) }}" alt="{{ $jogo->mandante->nome }}" class="w-12 h-12 object-contain mb-2">
+                @endif
                 <span class="text-xl font-bold text-gray-800">{{ $jogo->mandante->nome ?? '-' }}</span>
-                <span class="block text-3xl font-extrabold text-blue-600 mt-2">
+                <span class="block text-4xl font-extrabold text-blue-600 mt-2">
                     {{ $jogo->gols->where('is_mandante', true)->count() }}
                 </span>
             </div>
             
-            <div class="w-1/5">
-                <span class="text-sm font-bold bg-blue-100 text-blue-800 px-3 py-1 rounded-full">VS</span>
+            <!-- Divisor "X" -->
+            <div class="w-1/3 flex justify-center items-center">
+                <span class="text-sm font-bold bg-blue-100 text-blue-800 px-3 py-1 rounded-full">X</span>
             </div>
 
-            <div class="w-2/5">
-                <span class="text-xs text-gray-500 uppercase block mb-1">Visitante</span>
-                <!-- <span class="text-xl font-bold text-gray-800">{{ $jogo->visitante }}</span> -->
+            <!-- Visitante -->
+            <div class="w-1/3 flex flex-col items-center">
+                <span class="text-xs text-gray-500 uppercase block mb-2">Visitante</span>
+                @if(optional($jogo->visitante)->escudo)
+                    <img src="{{ asset('storage/' . $jogo->visitante->escudo) }}" alt="{{ $jogo->visitante->nome }}" class="w-12 h-12 object-contain mb-2">
+                @endif
                 <span class="text-xl font-bold text-gray-800">{{ $jogo->visitante->nome ?? '-' }}</span>
-                <span class="block text-3xl font-extrabold text-blue-600 mt-2">
+                <span class="block text-4xl font-extrabold text-blue-600 mt-2">
                     {{ $jogo->gols->where('is_mandante', false)->count() }}
                 </span>
             </div>
